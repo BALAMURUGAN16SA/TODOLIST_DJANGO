@@ -1,0 +1,57 @@
+{% extends "content/home.html" %}
+{% block content %}
+    <div class="main-content flex-grow-1 text-white">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                        <!-- Card for Tasks List -->
+                        <div class="card p-4" style="background-color: #2a3942; border: none; border-radius: 10px;">
+                            <h5 class="card-title text-center text-light">Your Tasks</h5>
+
+                            <!-- Tasks List -->
+                            <div class="tasks-list">
+                                {% for id, name, status in tasks %}
+                                    <div class="task-item mb-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <input type="checkbox" name="task{{ id }}" class="task-checkbox" value="yes"
+                                                    {% if status %}checked{% endif %}>
+                                                <label for="task{{ id }}" class="ms-2 text-light">
+                                                    {{ name }} - {% if status %}Completed{% else %}Pending{% endif %}
+                                                </label>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <input type="checkbox" name="delete{{ id }}" class="task-checkbox me-2" value="yes">
+                                                <label for="delete{{ id }}" class="text-light mb-0" style="color: red;">
+                                                    Delete
+                                                </label>
+                                            </div>                                                                        
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                            </div>
+
+                            <!-- New Task Input -->
+                            <div class="new-task mb-3">
+                                <input type="text" class="form-control" name="newTask" placeholder="Enter new task"
+                                    style="background-color: #3c4f57; color: #e9ecef; border: 1px solid #6c757d;" aria-label="New Task Input">
+                            </div>
+
+                            <button type="submit" class="btn w-100" style="background-color: #00a884; color: #fff; border-radius: 5px;" name="add" value="add">
+                                Add Task
+                            </button>
+                        </div>
+                </div>
+            </div>
+
+            <!-- Save Changes Button -->
+            <div class="d-flex justify-content-center mt-4">
+                <button type="submit" class="btn w-50" style="background-color: #00a884; color: #fff; border-radius: 5px;" name="save" value="save">
+                    Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}

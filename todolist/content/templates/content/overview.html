@@ -1,0 +1,54 @@
+{% extends "content/home.html" %}
+{% block content %}
+<div class="main-content flex-grow-1 text-white">
+    <!-- First Row: Cards for Total Lists and Total Tasks -->
+    <div class="row justify-content-center mt-5">
+        <!-- Total Lists Card -->
+        <div class="col-md-5">
+            <div class="card p-4 mb-4" style="background-color: #2a3942; border: none; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                <h5 class="card-title text-center text-light">Total Lists</h5>
+                <p class="card-text fs-3 text-center text-light" style="font-weight: 600;">{{ listCount }}</p>
+            </div>
+        </div>
+        <!-- Total Tasks Card -->
+        <div class="col-md-5">
+            <div class="card p-4 mb-4" style="background-color: #2a3942; border: none; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                <h5 class="card-title text-center text-light">Total Tasks</h5>
+                <p class="card-text fs-3 text-center text-light" style="font-weight: 600;">{{ taskCount }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Instruction Card: Table Style Dark Mode -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-8">
+            <div class="card p-5" style="background-color: #1e262f; border: none; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);">
+                <h5 class="card-title text-center text-light mb-4" style="font-weight: 700; font-size: 1.75rem;">Instructions</h5>
+                <!-- Table for Instructions -->
+                <table class="table table-dark table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-light" scope="col">Action</th>
+                            <th class="text-light" scope="col">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><i class="bi bi-check-circle-fill" style="color: #00a884;"></i> Save Tasks</td>
+                            <td>Save your tasks and lists effortlessly</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-check-circle-fill" style="color: #00a884;"></i> Manage Tasks</td>
+                            <td>Check and uncheck tasks</td>
+                        </tr>
+                        <tr>
+                            <td><i class="bi bi-check-circle-fill" style="color: #00a884;"></i> Sign In</td>
+                            <td>Sign in to protect your data</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
