@@ -1,34 +1,45 @@
-The project focuses on using Django as a backend framework to build a webapp.
+# Application Features
 
-# Flow of use:
-  ->Display home page
-  ->Access pages using Sidebar and Navbar :
-   a) Sidebar:
-      .Asks user to signin/signup before accessing
-      .Returning to signin/signup page
-        If has an account -> signin
-        If doesn't have an account -> signup -> signin
-      .Return to Home page
-      .Accessing content:
-        .Overview : Displays total Lists and total Tasks
-        .View     : Displays Lists and no.of tasks, no.of.completed and no.of.pending
-                    Clicking on lists returns to Tasks page, where user can add new tasks and edit previous tasks and save
-        .Create   : Create new List, and return to Tasks page, where user can add new tasks and edit previous tasks and save
+## **Home Page**
+- Displays the main dashboard after user authentication.
 
-   b) NavBar:
-      .View User profile
-      .SignOut
+---
 
-# Requirements:
-  ->django
-  ->crispy-forms
-  ->crispy-bootstrap
+## **Accessing Pages Using Sidebar and Navbar**
 
-# Project name:
-  ->todolist
+### **a) Sidebar**
+- **Sign In/Sign Up Flow:**
+  - Prompts the user to sign in or sign up before accessing content.
+  - **If the user has an account:** Redirects to the sign-in page.
+  - **If the user doesn’t have an account:** Redirects to the sign-up page, then to the sign-in page.
+  - After successful sign-in, redirects to the Home Page.
+
+- **Accessing Content:**
+  - **Overview:**
+    - Displays total Lists and total Tasks.
   
-# App names:
-  ->content (to display user pages)
-  ->user  (to display signin/signup pages)
-  ->todolist (default app)
+  - **View:**
+    - Displays all Lists along with:
+      - Number of tasks.
+      - Number of completed tasks.
+      - Number of pending tasks.
+    - Clicking on a List redirects to the Tasks Page, where the user can:
+      - Add new tasks.
+      - Edit previous tasks.
+      - Save changes.
+  
+  - **Create:**
+    - Allows creating a new List.
+    - Redirects to the Tasks Page, where the user can:
+      - Add new tasks.
+      - Edit previous tasks.
+      - Save changes.
 
+---
+
+### **b) Navbar**
+- **View User Profile:**
+  - Displays user details and profile information.
+
+- **Sign Out:**
+  - Logs the user out of the application.
