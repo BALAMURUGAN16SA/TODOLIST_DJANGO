@@ -1,0 +1,14 @@
+{% extends 'content/home.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+  <div class="card text-white" style="background-color: #202c33; width: 300px; border: 1px solid #3c4b52; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);">
+    <div class="card-body text-center">
+      <h5 class="card-title" style="color: #25d366;">Profile</h5>
+      <hr style="border-top: 1px solid #3c4b52;">
+      <p class="card-text"><strong>Username:</strong> {{ username }}</p>
+      <p class="card-text"><strong>Email:</strong> {{ email }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

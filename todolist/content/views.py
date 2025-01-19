@@ -52,18 +52,26 @@ def add_and_edit(response, listId):
                 if newDelete == 'yes':
                     deletedTask = Task.objects.get(id=obj.id)
                     deletedTask.delete()
-        
+    
     tasks = []
+    list = ''
     listObj = List.objects.get(user=user, id=listId)
     taskObj = Task.objects.filter(parent=listObj)
     for obj in taskObj:
         t_tuple = (obj.id, obj.name, obj.status)
         tasks.append(t_tuple)
+    list = listObj.name
     print(tasks)
-    return render(response, "content/add_and_edit.html", {"tasks":tasks})
+    return render(response, "content/add_and_edit.html", {"tasks":tasks, "list":list})
 
 @login_required
 def view(response):
+    if response.method ==  "POST":
+        user = response.user
+        listObj = List.objects.filter(user=user)
+        for obj1 in listObj:
+            if response.POST.get(f'delete{obj1.id}') == 'delete':
+                obj1.delete()
     data = []
     user = response.user
     listObj = List.objects.filter(user=user)

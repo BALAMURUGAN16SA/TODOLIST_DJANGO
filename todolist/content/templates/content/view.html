@@ -9,23 +9,28 @@
                     <table class="table table-dark table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>List</th>
                                 <th>Total Tasks</th>
                                 <th>Completed</th>
                                 <th>Pending</th>
+                                <th>Delete List</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for id, name, total, completed, pending in data %}
-                                <tr>
-                                    <td><a href = '{% url "add_and_edit" id  %}' style="text-decoration: none;color: whitesmoke;">{{ id }}</a></td>
-                                    <td><a href = '{% url "add_and_edit" id  %}' style="text-decoration: none; color: whitesmoke;">{{ name }}</a></td>
-                                    <td style="color: #00aaff;">{{ total }}</td> <!-- Blue -->
-                                    <td style="color: #00ff00;">{{ completed }}</td> <!-- Green -->
-                                    <td style="color: #ff4444;">{{ pending }}</td> <!-- Red -->
-                                </tr>
-                           {% endfor %}
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td><a href="{% url 'add_and_edit' id %}" style="text-decoration: none; color: whitesmoke;">{{ name }}</a></td>
+                                        <td style="color: #00aaff;">{{ total }}</td> <!-- Blue -->
+                                        <td style="color: #00ff00;">{{ completed }}</td> <!-- Green -->
+                                        <td style="color: #ff4444;">{{ pending }}</td> <!-- Red -->
+                                        <td>
+                                            <button type="submit" class="btn btn-danger btn-sm" name="delete{{id}}" value="delete">Delete</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
